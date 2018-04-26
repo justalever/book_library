@@ -20,10 +20,27 @@ What seems like a simple app carries some logic and weight to cover all our trac
 I ran out of time but one obvious area to extend this app is to save what plan a user has subscribed to. This can be done at the time they create a subscription. From there you can query different places in your app to show and hide specific features based on their plan type. 
 
 
+### Downloading and running the demo app
+Clone or download the files. `cd` into the project and run `bundle install`. From there you can run `rails db:migrate` and finally `rails s` to boot the server.
+
+The add your own credentials you need to run
+
+```
+bin/rails credentials:edit
+```
+
+top be able to access the credients file make sure your `config/master.key` file is filled with this key:
+
+```
+2bd890bb50c217270605d568943688e3
+```
+
+This app currently has no valid stripe api and plan keys so you will need to create and add your own using the command above.
 
 #### Models and Relationships
 
 Our app features just three models. At all times we access books and users through a library model. This ends up being a `many-to-many` association. 
+
 
 [Continue reading on web-crunch.com](https://web-crunch.com/lets-build-ruby-on-rails-book-library-stripe-subscription-payments)
 
