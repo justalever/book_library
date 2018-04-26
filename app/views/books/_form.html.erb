@@ -1,0 +1,44 @@
+<%= simple_form_for @book, html: { multipart: true } do |f| %>
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+
+  <div class="field">
+    <div class="control">
+      <%= f.input :title, required: true, autofocus: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.input :description, required: true, input_html: { class: "textarea"}, wrapper: false, label_html: { class: "label" } %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.input :author, required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <div class="file">
+        <label class="file-label">
+          <%= f.input :thumbnail, as: :file, required: true, input_html: { class: "file-input" }, wrapper: false, label: false  %>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fa fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a thumbnail…
+            </span>
+          </span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+
+  <%= f.button :submit, class:"button is-dark" %>
+<% end %>

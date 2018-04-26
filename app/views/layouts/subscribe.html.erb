@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= Rails.configuration.application_name %></title>
+    <%= csrf_meta_tags %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'https://js.stripe.com/v3/','data-turbolinks-track': 'reload' %>
+    <%= tag :meta, name: "stripe-key", content: Rails.application.credentials.stripe_publishable_key %>
+  </head>
+
+  <body class="<%= yield (:body_class) %>">
+    <% if flash[:notice] %>
+      <div class="notification is-success global-notification">
+        <p class="notice"><%= notice %></p>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+    <div class="notification is-danger global-notification">
+      <p class="alert"><%= alert %></p>
+    </div>
+    <% end %>
+
+     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <div class="navbar-item">
+          <h1 class="title is-5 has-text-white"><%= Rails.configuration.application_name %></h1>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
+  </body>
+</html>

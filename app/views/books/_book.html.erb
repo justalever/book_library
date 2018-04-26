@@ -1,0 +1,43 @@
+<div class="book">
+  <div class="card">
+    <div class="card-image">
+      <figure class="image is-3by4">
+        <%= link_to image_tag(book.thumbnail), book %>
+      </figure>
+    </div>
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4"><%= book.title %></p>
+          <p class="subtitle is-6"><%= book.author %></p>
+        </div>
+      </div>
+
+      <div class="content">
+         <% if subscribed? %>
+
+          <% if user_added_to_library?(current_user, book) %>
+
+            <%= link_to 'Remove from library', add_book_path(book, type: "remove"), method: :put, class: "button is-danger is-fullwidth" %>
+
+            <% if controller.controller_name == "library" %>
+              <%= link_to 'Download', '#', class:"button is-success is-fullwidth mt1" %>
+            <% end %>
+
+          <% else %>
+            <%= link_to 'Add to library', add_book_path(book, type: "add"), method: :put, class: "button is-link is-fullwidth" %>
+          <% end %>
+
+        <% else %>
+          <%= link_to 'Add to library', new_user_registration_path, class: "button is-link is-fullwidth" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="controls pt2">
+    <% if admin? %>
+      <%= link_to 'Edit', edit_book_path(book), class:"button is-small is-rounded" %>
+      <%= link_to 'Delete', book, method: :delete, data: { confirm: "Are you sure? "}, class:"button is-small is-rounded" %>
+    <% end %>
+  </div>
+</div>

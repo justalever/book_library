@@ -1,0 +1,20 @@
+<div class="section">
+  <div class="columns">
+    <div class="column is-4">
+      <%= image_tag @book.thumbnail.variant(resize: "320x495"), alt: "#{@book.title} by #{@book.author}" %>
+    </div>
+    <div class="column">
+      <h1 class="title is-2"><%= @book.title %><h1>
+
+        <div class="content">
+          <%= render 'book-controls', book: @book %>
+          <p><strong>Description:</strong></p>
+          <%= @book.description %>
+        </div>
+
+      <% if admin? %>
+        <%= link_to 'Edit', edit_book_path(@book) %> |
+      <% end %>
+      </div>
+    </div>
+</div>

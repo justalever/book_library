@@ -1,6 +1,6 @@
 <section class="section">
   <div class="container">
-    <div class="columns is-centered">
+    <div class="columns">
       <div class="column is-4">
 
       <h2 class="title is-2">Edit <%= resource_name.to_s.humanize %></h2>
@@ -51,6 +51,23 @@
         <h3 class="title is-5">Cancel my account</h3>
         <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
+      </div>
+      <div class="column is-7 is-offset-1">
+        <% if current_user.card_last4? %>
+          <div class="card-on-file">
+            <h3 class="title is-3">Thank you for being a subscriber</h3>
+            <hr />
+            <p>Your current card:</p>
+            <div> **** **** **** <%= current_user.card_last4 %></div>
+            <div>Expires <%= current_user.card_exp_month %> / <%= current_user.card_exp_year %></div>
+
+            <% if current_user.subscribed? %>
+            <p><%= link_to "Cancel Subscription", subscription_path(current_user), method: :delete, data: { confirm: "Are you sure?" }, class: "use-different-card" %></p>
+            <% else %>
+              <p> You are not currently subscribed. <%= link_to 'Sign up', pricing_index_path %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

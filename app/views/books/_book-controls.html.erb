@@ -1,0 +1,17 @@
+ <% if subscribed? %>
+
+  <% if user_added_to_library?(current_user, book) %>
+
+    <%= link_to 'Remove from library', add_book_path(book, type: "remove"), method: :put, class: "button is-danger is-fullwidth" %>
+
+    <% if controller.controller_name == "library" %>
+      <%= link_to 'Download', '#', class:"button is-success is-fullwidth mt1" %>
+    <% end %>
+
+  <% else %>
+    <%= link_to 'Add to library', add_book_path(book, type: "add"), method: :put, class: "button is-link is-fullwidth" %>
+  <% end %>
+
+<% else %>
+  <%= link_to 'Add to library', new_user_registration_path, class: "button is-link is-fullwidth" %>
+<% end %>

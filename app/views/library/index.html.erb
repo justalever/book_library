@@ -1,0 +1,24 @@
+<section class="hero">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title">
+        <i class="fa fa-book"></i> <%= current_user.name %>'s Library
+      </h1>
+      <h2 class="subtitle">
+        Download or manage your chosen titles below
+      </h2>
+    </div>
+  </div>
+</section>
+
+  <% if @library_books.exists? %>
+    <div class="book-grid">
+      <%= render @library_books, book: @book %>
+    </div>
+  <% else %>
+  <article class="message">
+    <div class="message-body">You haven't added any books to your library yet. <%= link_to 'Add some', root_path %>.</div>
+  </article>
+  <% end %>
+
+</section>
