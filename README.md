@@ -1,3 +1,7 @@
+![Let's Build](https://i.imgur.com/kGYNrNG.jpg)
+
+# Let's Build: With Ruby on Rails - A Book Library App with Stripe Subscription Payments
+
 Welcome to my **eleventh** Let's Build series featuring Ruby on Rails. This installment, once again, focuses on accepting payments using Ruby on Rails as a web application framework. We partner Ruby on Rails with Stripe to create a subscription based SaaS model for a book library application.
 
 ### What's new in this build?
@@ -42,5 +46,5 @@ This app currently has no valid stripe api and plan keys so you will need to cre
 Our app features just three models. At all times we access books and users through a library model. This ends up being a `many-to-many` association. 
 
 
-[Continue reading on web-crunch.com](https://web-crunch.com/lets-build-ruby-on-rails-book-library-stripe-subscription-payments)
+[Continue reading on web-crunch.com (to see all videos and code)](https://web-crunch.com/lets-build-ruby-on-rails-book-library-stripe-subscription-payments)
 
